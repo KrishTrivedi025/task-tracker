@@ -1,0 +1,22 @@
+# Render Blueprint for the Task Tracker backend.
+# In Render: New + → Blueprint → connect this repo. Set the secret env vars
+# (MONGO_URI, JWT_SECRET, CLIENT_URL) in the dashboard after first deploy.
+services:
+  - type: web
+    name: task-tracker-api
+    runtime: node
+    rootDir: server
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLIENT_URL
+        sync: false
