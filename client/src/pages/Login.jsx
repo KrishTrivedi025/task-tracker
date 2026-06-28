@@ -1,11 +1,38 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { Mail, Lock } from "lucide-react";
+import { Mail, Lock, Copy, Check } from "lucide-react";
 import AuthLayout from "../components/AuthLayout.jsx";
 import Button from "../components/ui/Button.jsx";
 import Input from "../components/ui/Input.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
+
+const DEMO = { email: "demo@tasktracker.com", password: "Demo@1234" };
+
+function CopyField({ label, value }) {
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    await navigator.clipboard.writeText(value);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div className="flex items-center justify-between gap-2">
+      <div className="min-w-0">
+        <p className="text-[10px] font-medium uppercase tracking-wide text-ink-muted">{label}</p>
+        <p className="truncate text-sm font-mono font-medium text-ink">{value}</p>
+      </div>
+      <button
+        type="button"
+        onClick={copy}
+        className="flex-shrink-0 rounded-md p-1.5 text-ink-muted transition hover:bg-line hover:text-ink"
+        title={`Copy ${label}`}
+      >
+        {copied ? <Check size={14} className="text-green-600" /> : <Copy size={14} />}
+      </button>
+    </div>
+  );
+}
 
 export default function Login() {
   const { login } = useAuth();
@@ -42,8 +69,29 @@ export default function Login() {
     }
   };
 
+  const fillDemo = () => setForm(DEMO);
+
   return (
     <AuthLayout title="Welcome back" subtitle="Sign in to your account to continue.">
+      {/* Demo credentials card */}
+      <div className="mb-5 rounded-xl border border-brand-500/20 bg-brand-500/5 p-3.5">
+        <p className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-brand-600">
+          Evaluator demo account
+        </p>
+        <div className="space-y-2">
+          <CopyField label="Email" value={DEMO.email} />
+          <div className="border-t border-brand-500/10" />
+          <CopyField label="Password" value={DEMO.password} />
+        </div>
+        <button
+          type="button"
+          onClick={fillDemo}
+          className="mt-3 w-full rounded-lg bg-brand-500/10 py-1.5 text-xs font-semibold text-brand-600 transition hover:bg-brand-500/20"
+        >
+          Fill credentials automatically
+        </button>
+      </div>
+
       <form onSubmit={onSubmit} className="space-y-4" noValidate>
         <Input
           label="Email"
