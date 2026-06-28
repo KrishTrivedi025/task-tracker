@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Modal from "./ui/Modal.jsx";
 import Input from "./ui/Input.jsx";
 import Select from "./ui/Select.jsx";
+import DatePicker from "./ui/DatePicker.jsx";
 import Button from "./ui/Button.jsx";
 import { PRIORITY_OPTIONS, STATUS_OPTIONS } from "../lib/taskMeta.js";
 
@@ -110,10 +111,9 @@ export default function TaskForm({ open, onClose, onSubmit, task }) {
             options={PRIORITY_OPTIONS}
           />
         </div>
-        <Input
+        <DatePicker
           label="Due date"
           name="dueDate"
-          type="date"
           value={form.dueDate}
           onChange={onChange}
         />
