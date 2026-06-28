@@ -20,8 +20,7 @@ export default function AuthLayout({ title, subtitle, children }) {
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-indigo-400/20 blur-3xl" />
 
         <div className="relative flex h-full flex-col justify-between p-12">
-          {/* Logo — text only; "Task" white, "Tracker" light-indigo to mirror dashboard two-tone */}
-          <Logo showIcon={false} className="[&>span]:text-white [&>span>span]:text-indigo-200" />
+          {/* watermark only — no logo on dark panel */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -49,8 +48,7 @@ export default function AuthLayout({ title, subtitle, children }) {
           transition={{ duration: 0.4, ease: "easeOut" }}
           className="w-full max-w-sm"
         >
-          {/* Logo shown only on mobile (panel hidden) — text only */}
-          <div className="mb-8 lg:hidden">
+          <div className="mb-8">
             <Logo showIcon={false} />
           </div>
           <h1 className="font-display text-2xl font-bold text-ink">{title}</h1>
