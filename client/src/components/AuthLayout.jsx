@@ -20,8 +20,8 @@ export default function AuthLayout({ title, subtitle, children }) {
         <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-indigo-400/20 blur-3xl" />
 
         <div className="relative flex h-full flex-col justify-between p-12">
-          {/* Logo — text only, no icon box */}
-          <Logo showIcon={false} className="[&_span]:text-white" />
+          {/* Logo — text only; "Task" white, "Tracker" light-indigo to mirror dashboard two-tone */}
+          <Logo showIcon={false} className="[&>span]:text-white [&>span>span]:text-indigo-200" />
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
