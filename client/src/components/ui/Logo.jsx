@@ -24,7 +24,7 @@ export default function Logo({ showText = true, showIcon = true, className = "" 
       )}
       {showText && (
         <span className="font-display text-lg font-bold tracking-tight text-ink">
-          Task<span className="text-brand-600">Tracker</span>
+          Task <span className="text-brand-600">Tracker</span>
         </span>
       )}
     </div>
