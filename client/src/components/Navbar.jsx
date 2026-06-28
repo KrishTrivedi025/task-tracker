@@ -21,7 +21,7 @@ export default function Navbar() {
           </div>
           <button
             onClick={logout}
-            className="flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-colors hover:bg-stone-100 hover:text-ink"
+            className="group flex items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-muted transition-all hover:bg-red-50 hover:text-red-500 hover:[filter:drop-shadow(0_0_8px_rgba(239,68,68,0.55))]"
           >
             <LogOut size={16} />
             <span className="hidden sm:block">Log out</span>
